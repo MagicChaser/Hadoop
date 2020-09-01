@@ -11,7 +11,9 @@ public class JedisTest {
     @Test
     //jedis连接Redis
     public void test1(){
+        //创建连接对象
         Jedis jedis = new Jedis("192.168.1.102", 6379);
+        //获取连接
         String ping = jedis.ping();
         System.out.println("ping="+ping);
         Long l = jedis.lpush("Color", "Red", "Blue", "Yellow", "Green", "Black", "White", "Grey");
@@ -20,6 +22,7 @@ public class JedisTest {
         for (String re : res) {
             System.out.print(re+"    ");
         }
+        //关闭连接
         jedis.close();
     }
     @Test
@@ -37,6 +40,7 @@ public class JedisTest {
         for (String s : character) {
             System.out.println(s);
         }
+        //关闭连接池
         jp.close();
     }
 }
